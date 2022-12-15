@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>Dra.MultiplayerCustomTickrates</packageId>
+  <name>Multiplayer - Custom Tickrates</name>
+  <supportedVersions>
+    <li>1.4</li>
+  </supportedVersions>
+  <author>Sokyran, Hush</author>
+  <description>
+Do you like my mods? You can support me on Ko-Fi: https://ko-fi.com/sokyran
+
+This mod allows for a fine-tune configuration of the tickrate in a Multiplayer game.
+
+This can be especially useful in situations where performance is an issue - instead of being permanently tied to a lower speed now you'll be able to lower the tickrate just enough to have enjoyable performance.
+
+Only works in Multiplayer games - has no effect whatsoever when playing single-player.
+  </description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases</downloadUrl>
+    </li>
+    <li>
+      <packageId>rwmt.Multiplayer</packageId>
+      <displayName>Multiplayer</displayName>
+      <downloadUrl>https://github.com/rwmt/Multiplayer/releases</downloadUrl>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/1752864297</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>Ludeon.RimWorld.Ideology</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>brrainz.harmony</li>
+    <li>rwmt.Multiplayer</li>
+  </loadAfter>
+</ModMetaData>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <MpTickratesTargetNormal>normal</MpTickratesTargetNormal>
+  <MpTickratesTargetFast>fast</MpTickratesTargetFast>
+  <MpTickratesTargetSuperfast>superfast</MpTickratesTargetSuperfast>
+  <MpTickratesTargetSuperfastNothingHappening>superfast (nothing happening)</MpTickratesTargetSuperfastNothingHappening>
+  <MpTickratesTargetUltrafast>ultrafast</MpTickratesTargetUltrafast>
+
+  <MpTickratesTargetSuperfastNothingHappeningTip>used only in situations where nothing is really happening - like no enemies, all colonists sleeping, etc.</MpTickratesTargetSuperfastNothingHappeningTip>
+  <MpTickratesTargetUltrafastTip>hidden speed useable with dev mode enabled - doesn't have an icon, can only be accessed with hotkeys.</MpTickratesTargetUltrafastTip>
+  
+  <MpTickratesWarnSameValue>please note - using the same value for multiple game speeds could cause some (minor) issues.</MpTickratesWarnSameValue>
+
+  <MpTickratesApply>apply</MpTickratesApply>
+  <MpTickratesResetDefault>restore default</MpTickratesResetDefault>
+  
+  <MpSpeedTargetTicks>ticks</MpSpeedTargetTicks>
+</LanguageData>
