@@ -26,11 +26,10 @@ internal static class PatchTickRate
         {
             var ci = codeInstructions[index];
             var value = -1;
-            var isInt = true;
-            var isSbyte = false;
             var nextInstr = index + 1 < codeInstructions.Length ? codeInstructions[index + 1] : null;
 
-            if (nextInstr == null || nextInstr.opcode == OpCodes.Br || nextInstr.opcode == OpCodes.Br_S || !nextInstr.Branches(out _))
+            if (nextInstr == null || nextInstr.opcode == OpCodes.Br || nextInstr.opcode == OpCodes.Br_S ||
+                (!nextInstr.Branches(out _) && (ci.opcode == OpCodes.Ldc_R4 || nextInstr.opcode != OpCodes.Ret)))
             {
                 if (ci.opcode == OpCodes.Ldc_I4_1)
                     value = 1;
@@ -39,17 +38,11 @@ internal static class PatchTickRate
                 else if (ci.opcode == OpCodes.Ldc_I4_6)
                     value = 6;
                 else if (ci.opcode == OpCodes.Ldc_I4_S && ci.operand is sbyte sbyteValue)
-                {
                     value = sbyteValue;
-                    isSbyte = true;
-                }
                 else if (ci.opcode == OpCodes.Ldc_I4 && ci.operand is int intValue)
                     value = intValue;
                 else if (ci.opcode == OpCodes.Ldc_R4 && ci.operand is float floatVal)
-                {
                     value = Mathf.RoundToInt(floatVal);
-                    isInt = false;
-                }
             }
 
             if (value > 0)
@@ -69,26 +62,9 @@ internal static class PatchTickRate
                     ci.opcode = OpCodes.Ldsfld;
                     ci.operand = target;
                 }
-
-                yield return ci;
-
-                if (isSbyte)
-                {
-                    if (nextInstr != null && nextInstr.opcode == OpCodes.Conv_R4)
-                        index++;
-                    else
-                        yield return new CodeInstruction(OpCodes.Conv_I1);
-                    
-                }
-                else if (isInt)
-                {
-                    if (nextInstr != null && nextInstr.opcode == OpCodes.Conv_R4)
-                        index++;
-                    else
-                        yield return new CodeInstruction(OpCodes.Conv_I4);
-                }
             }
-            else yield return ci;
+
+            yield return ci;
         }
     }
 }
