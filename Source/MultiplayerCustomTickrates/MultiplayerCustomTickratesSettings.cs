@@ -28,20 +28,23 @@ public class MultiplayerCustomTickratesSettings : ModSettings
 
     public void DoSettingsWindowContents(Rect inRect)
     {
+        var ticksText = "MpSpeedTargetTicks".Translate();
+        var ticksWidth = ticksText.GetWidthCached();
+
         var listing = new Listing_Standard();
         listing.Begin(inRect);
-        listing.ColumnWidth = 270f;
+        listing.ColumnWidth = 250f + 56f + 10f + ticksWidth;
 
         listing.Label("MpTickratesWarnSameValue".Translate().CapitalizeFirst());
         listing.Label("MpTickratesWarnNormalSpeed".Translate().CapitalizeFirst());
 
         using (new TextBlock(TextAnchor.MiddleRight))
         {
-            DrawGameSpeedTarget(listing, "MpTickratesTargetNormal", ref targetTicksNormal, 1, 9999);
-            DrawGameSpeedTarget(listing, "MpTickratesTargetFast", ref targetTicksFast, 1, 9999);
-            DrawGameSpeedTarget(listing, "MpTickratesTargetSuperfast", ref targetTicksSuperfast, 1, 9999);
-            DrawGameSpeedTarget(listing, "MpTickratesTargetSuperfastNothingHappening", "MpTickratesTargetSuperfastNothingHappeningTip", ref targetTicksSuperfastNothingHappening, 1, 9999);
-            DrawGameSpeedTarget(listing, "MpTickratesTargetUltrafast", "MpTickratesTargetUltrafastTip", ref targetTicksUltrafast, 1, 9999);
+            DrawGameSpeedTarget(listing, "MpTickratesTargetNormal", ref targetTicksNormal, 1, 9999, ticksText, ticksWidth);
+            DrawGameSpeedTarget(listing, "MpTickratesTargetFast", ref targetTicksFast, 1, 9999, ticksText, ticksWidth);
+            DrawGameSpeedTarget(listing, "MpTickratesTargetSuperfast", ref targetTicksSuperfast, 1, 9999, ticksText, ticksWidth);
+            DrawGameSpeedTarget(listing, "MpTickratesTargetSuperfastNothingHappening", "MpTickratesTargetSuperfastNothingHappeningTip", ref targetTicksSuperfastNothingHappening, 1, 9999, ticksText, ticksWidth);
+            DrawGameSpeedTarget(listing, "MpTickratesTargetUltrafast", "MpTickratesTargetUltrafastTip", ref targetTicksUltrafast, 1, 9999, ticksText, ticksWidth);
         }
 
         if ((targetTicksNormal != 60 ||
@@ -73,18 +76,18 @@ public class MultiplayerCustomTickratesSettings : ModSettings
         listing.End();
     }
 
-    private static void DrawGameSpeedTarget(Listing listing, string label, ref int currentValue, int min, int max)
-        => DrawGameSpeedTarget(listing, label, null, ref currentValue, min, max);
+    private static void DrawGameSpeedTarget(Listing listing, string label, ref int currentValue, int min, int max, string ticksText, float ticksWidth)
+        => DrawGameSpeedTarget(listing, label, null, ref currentValue, min, max, ticksText, ticksWidth);
 
-    private static void DrawGameSpeedTarget(Listing listing, string label, string tip, ref int currentValue, int min, int max)
+    private static void DrawGameSpeedTarget(Listing listing, string label, string tip, ref int currentValue, int min, int max, string ticksText, float ticksWidth)
     {
-        var rect = listing.GetRect(30);
-        var labelRect = rect.Width(240);
+        var rect = listing.GetRect(30f);
+        var labelRect = rect.Width(240f);
         Widgets.Label(labelRect, $"{label.Translate().CapitalizeFirst()}:");
         if (tip != null && Mouse.IsOver(labelRect))
             TooltipHandler.TipRegion(labelRect, new TipSignal(tip.Translate().CapitalizeFirst(), 1531));
 
-        rect = rect.Right(250);
+        rect = rect.Right(250f);
 
         string buffer = null;
         Widgets.TextFieldNumeric(
@@ -96,8 +99,7 @@ public class MultiplayerCustomTickratesSettings : ModSettings
         );
 
         rect = rect.Right(56F);
-        var ticksText = "MpSpeedTargetTicks".Translate();
-        Widgets.Label(rect.Width(ticksText.GetWidthCached()), ticksText);
+        Widgets.Label(rect.Width(ticksWidth), ticksText);
     }
 
     [SyncMethod]
