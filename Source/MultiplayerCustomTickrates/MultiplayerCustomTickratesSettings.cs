@@ -33,6 +33,7 @@ public class MultiplayerCustomTickratesSettings : ModSettings
         listing.ColumnWidth = 270f;
 
         listing.Label("MpTickratesWarnSameValue".Translate().CapitalizeFirst());
+        listing.Label("MpTickratesWarnNormalSpeed".Translate().CapitalizeFirst());
 
         using (new TextBlock(TextAnchor.MiddleRight))
         {
