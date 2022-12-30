@@ -28,7 +28,7 @@ public class MultiplayerCustomTickratesMod : Mod
 
     private static void AddIgnoredConfigModId(string targetId)
     {
-        const string warning = "[Multiplayer - Custom Tickrates] couldn't add the mod to ignored mod configs for syncing";
+        const string warning = "[Multiplayer - Custom Tickrates] couldn't add the mod to ignored mod configs for syncing and Multiplayer will warn about potential config mismatch";
         const string targetField = "Multiplayer.Client.JoinData:ignoredConfigsModIds";
         
         var ignoredConfigsField = AccessTools.Field(targetField);
