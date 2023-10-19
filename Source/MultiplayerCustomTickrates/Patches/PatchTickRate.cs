@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using Multiplayer.Client;
+using Multiplayer.Client.AsyncTime;
 using UnityEngine;
 
 namespace MultiplayerCustomTickrates.Patches;
@@ -14,7 +15,7 @@ internal static class PatchTickRate
     private static IEnumerable<MethodBase> TargetMethods()
     {
         yield return AccessTools.Method(typeof(AsyncTimeComp), nameof(AsyncTimeComp.TickRateMultiplier));
-        yield return AccessTools.Method(typeof(MultiplayerWorldComp), nameof(MultiplayerWorldComp.TickRateMultiplier));
+        yield return AccessTools.Method(typeof(AsyncWorldTimeComp), nameof(AsyncWorldTimeComp.TickRateMultiplier));
         yield return AccessTools.Method(typeof(TickRatePatch), "Prefix");
     }
 
