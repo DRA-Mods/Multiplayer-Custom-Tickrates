@@ -7,7 +7,7 @@
   <MpTickratesTargetUltrafast>ultrafast</MpTickratesTargetUltrafast>
 
   <MpTickratesTargetSuperfastNothingHappeningTip>used only in situations where nothing is really happening - like no enemies, all colonists sleeping, etc.</MpTickratesTargetSuperfastNothingHappeningTip>
-  <MpTickratesTargetUltrafastTip>hidden speed useable with dev mode enabled - doesn't have an icon, can only be accessed with hotkeys.</MpTickratesTargetUltrafastTip>
+  <MpTickratesTargetUltrafastTip>hidden speed usable with dev mode enabled - doesn't have an icon, can only be accessed with hotkeys.</MpTickratesTargetUltrafastTip>
 
   <MpTickratesWarnSameValue>please note - using the same value for multiple game speeds could cause some (minor) issues.</MpTickratesWarnSameValue>
   <MpTickratesWarnNormalSpeed>additionally, you should set normal speed to bbe lower than fast speed, as otherwise the game won't slow down when threats are present, etc.</MpTickratesWarnNormalSpeed>
