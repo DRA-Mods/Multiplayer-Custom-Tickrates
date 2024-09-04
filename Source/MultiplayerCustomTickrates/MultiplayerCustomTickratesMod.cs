@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Linq;
+using HarmonyLib;
 using Multiplayer.API;
 using UnityEngine;
 using Verse;
@@ -50,6 +51,12 @@ public class MultiplayerCustomTickratesMod : Mod
         if (value is not string[] configs)
         {
             Log.Warning($"{warning} - target field did not return string array type - actual value ({value.ToStringSafe()}) of type {ignoredConfigsField.FieldType}");
+            return;
+        }
+
+        if (configs.Contains(targetId))
+        {
+            Log.Message("[Multiplayer - Custom Tickrates] - the ignored configs list already contains MP Custom Tickrates.");
             return;
         }
 
